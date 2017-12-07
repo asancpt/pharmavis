@@ -16,30 +16,30 @@
 #'
 #' @return ggplot2 figures
 #' @examples
-#' ggnca(concData = Theoph, colSubj = "Subject", colTime = "Time", colConc = "conc")
+#' plot_nca(concData = Theoph, colSubj = "Subject", colTime = "Time", colConc = "conc")
+#' plot_nca(concData = Indometh, colSubj = "Subject", colTime = "time", colConc = "conc")
 #'
 
-ggnca <- function(concData, colSubj = "Subject", colTime = "Time", colConc = "conc"){
+plot_nca <- function(concData, colSubj = "Subject", colTime = "Time", colConc = "conc"){
 #concData = Theoph; colSubj = "Subject"; colTime = "Time"; colConc = "conc"
 #concData = GGnca; colSubj = "ID"; colTime = "TIME"; colConc = "DV"
     concData <- data.frame(concData)
     ggncaDataset <- data.frame(Subject = concData[ , colSubj],
                                Time = concData[ , colTime],
                                conc = concData[ , colConc])
-    Backbone <- ggplot(ggncaDataset,
+    group_log <- ggplot(ggncaDataset,
                        aes(Time, conc, group = Subject)) +
         geom_line() +
         geom_point() +
         scale_y_log10()
 
-    Individual <- Backbone + facet_wrap(~ Subject)
-    groupLinear <- Backbone + scale_y_continuous()
-    groupLog <- groupLinear + scale_y_log10()
+    individual <- group_log + facet_wrap(~ Subject)
+    group_linear <- group_log + scale_y_continuous()
 
     cowReturn <- cowplot::ggdraw() +
-        cowplot::draw_plot(Individual, 0, .5, 1, .5) +
-        cowplot::draw_plot(groupLinear, 0, 0, .5, .5) +
-        cowplot::draw_plot(groupLog, .5, 0, .5, .5) +
+        cowplot::draw_plot(individual, 0, .5, 1, .5) +
+        cowplot::draw_plot(group_linear, 0, 0, .5, .5) +
+        cowplot::draw_plot(group_log, .5, 0, .5, .5) +
         cowplot::draw_plot_label(c("A", "B", "C"), c(0, 0, 0.5), c(1, 0.5, 0.5), size = 15)
     return(cowReturn)
 }
