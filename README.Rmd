@@ -1,8 +1,29 @@
 ---
-title: pharmvis
+title: "R package: pharmavis"
+author: "Sungpil Han"
 ---
 
-# pharmavis
+# Introduction
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = TRUE)
+```
+
+Installation can be done by running the script below.
+
+```{r installation}
+# devtools::install_github('asancpt/pharmavis')
+library(pharmavis)
+```
+
+Here are some examples.
+
+```{r}
+plot_nca(concData = Theoph, colSubj = "Subject", colTime = "Time", colConc = "conc")
+plot_nca(concData = Indometh, colSubj = "Subject", colTime = "time", colConc = "conc")
+```
+
+## Future references
 
 여기서 예제를 올리고 이를 응용해서 PK plot을 그려 나갈 예정입니다.
 
@@ -19,5 +40,4 @@ ggplot2::qplot(x=Time, y=Conc, group=ID, color = Race,
                facets = Race ~ Gender,
                geom=c('line', 'point'))
 ```
-
 
