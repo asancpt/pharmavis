@@ -4,8 +4,11 @@ Version: 0.0.2
 Authors@R: person("Sungpil", "Han", email = "shan@acp.kr", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-4674-7682"))
 Description: Pharmacology Visualization.
 Depends: R (>= 3.4.2)
-License: GPL-3
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
-
+RoxygenNote: 6.1.0
+URL: https://github.com/asancpt/pharmavis
+BugReports: https://github.com/asancpt/pharmavis/issues
+Imports: 
+    ggplot2

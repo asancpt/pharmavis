@@ -30,7 +30,8 @@ plot_nca <- function(concData, colSubj = "Subject", colTime = "Time", colConc = 
                        aes(Time, conc, group = Subject)) +
         geom_line() +
         geom_point() +
-        scale_y_log10()
+        scale_y_log10() + 
+        theme_bw()
 
     individual <- group_log + facet_wrap(~ Subject)
     group_linear <- group_log + scale_y_continuous()
@@ -42,7 +43,6 @@ plot_nca <- function(concData, colSubj = "Subject", colTime = "Time", colConc = 
         cowplot::draw_plot_label(c("A", "B", "C"), c(0, 0, 0.5), c(1, 0.5, 0.5), size = 15)
     return(cowReturn)
 }
-
 
 #' concentration-time curves
 #'

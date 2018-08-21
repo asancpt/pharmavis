@@ -25,5 +25,4 @@ This draws pharmacokinetic concentration-time curve with ggplot2 packages.
 \examples{
 plot_nca(concData = Theoph, colSubj = "Subject", colTime = "Time", colConc = "conc")
 plot_nca(concData = Indometh, colSubj = "Subject", colTime = "time", colConc = "conc")
-
 }
